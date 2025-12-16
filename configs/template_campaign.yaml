@@ -1,0 +1,117 @@
+# Campaign Configuration Template
+# Copy this file to create new campaigns
+# Usage: cp configs/template_campaign.yaml configs/your_campaign.yaml
+
+# ============================================================================
+# CAMPAIGN IDENTIFICATION
+# ============================================================================
+
+campaign_id: "YOUR_CAMPAIGN_ID_HERE"        # Must be unique across all campaigns
+client_account_id: "acct_iflytek"           # Must match key in data/accounts.json
+name: "Your Campaign Name"                  # Appears in Meta Ads Manager
+daily_budget: 5000                          # In cents (5000 = SGD 50.00, USD 50.00, etc.)
+
+# ============================================================================
+# VIDEO CREATIVE
+# ============================================================================
+
+video:
+  file_path: "creatives/your_video.mp4"    # Path relative to project root
+  thumbnail: null                           # Optional: custom thumbnail path
+
+# ============================================================================
+# AD COPY
+# ============================================================================
+
+primary_text: "Your main ad copy goes here"             # Main text above video
+headline: "Your Headline"                                # Text below video
+description: "Optional description"                      # Optional
+call_to_action: "SHOP_NOW"                              # Button type (see options below)
+
+# Call-to-action options:
+#   SHOP_NOW, LEARN_MORE, SIGN_UP, DOWNLOAD, BOOK_TRAVEL, CONTACT_US,
+#   GET_QUOTE, APPLY_NOW, SUBSCRIBE, REQUEST_TIME, etc.
+
+# ============================================================================
+# DESTINATION
+# ============================================================================
+
+destination_url: "https://your-website.com/"            # Landing page URL
+url_parameters: "utm_source=facebook&utm_campaign=your_campaign"  # Optional tracking
+
+# ============================================================================
+# TARGETING
+# ============================================================================
+
+geo_locations:
+  countries: ["SG"]     # Singapore (use ["US"], ["MY"], or multiple ["SG", "MY", "US"])
+
+# ============================================================================
+# ASSET OVERRIDES (Optional)
+# ============================================================================
+
+# Leave as null to use account defaults from data/accounts.json
+pixel_id: null
+page_id: null
+catalog_id: null
+
+# ============================================================================
+# HOW TO USE THIS TEMPLATE
+# ============================================================================
+#
+# 1. Copy this file:
+#    cp configs/template_campaign.yaml configs/my_campaign.yaml
+#
+# 2. Edit the copied file:
+#    - Update campaign_id (must be unique)
+#    - Update name, budget, ad copy
+#    - Update video file path
+#    - Update destination URL
+#
+# 3. Place your video file in creatives/ directory:
+#    cp ~/Downloads/my_video.mp4 creatives/my_video.mp4
+#
+# 4. Create campaign via API:
+#
+#    WITHOUT scheduling (create as PAUSED):
+#    curl -X POST "http://localhost:8000/api/v1/campaigns" \
+#      -H "Content-Type: application/json" \
+#      -d '{"config_path": "configs/my_campaign.yaml"}'
+#
+#    WITH scheduling (future activation):
+#    curl -X POST "http://localhost:8000/api/v1/campaigns" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#        "config_path": "configs/my_campaign.yaml",
+#        "start_time": "2026-03-15T08:00:00"
+#      }'
+#
+# 5. Activate immediately (if created without schedule):
+#    curl -X POST "http://localhost:8000/api/v1/campaigns/YOUR_CAMPAIGN_ID_HERE/activate"
+#
+# ============================================================================
+# IMPORTANT NOTES
+# ============================================================================
+#
+# - All monetary values in CENTS (5000 = $50.00, 10000 = $100.00)
+# - All times in GMT+8 (Singapore timezone)
+# - Campaigns always created in PAUSED status for safety
+# - Video files must be .mp4 or .mov format, under 4GB
+# - campaign_id must be unique - never reuse IDs
+# - For scheduled campaigns, machine must stay running until activation
+#
+# ============================================================================
+# QUICK REFERENCE
+# ============================================================================
+#
+# Check campaign status:
+#   curl "http://localhost:8000/api/v1/campaigns/YOUR_CAMPAIGN_ID_HERE" | jq '.'
+#
+# Sync from Meta Ads Manager:
+#   curl -X POST "http://localhost:8000/api/v1/campaigns/YOUR_CAMPAIGN_ID_HERE/sync"
+#
+# Cancel scheduled activation:
+#   curl -X DELETE "http://localhost:8000/api/v1/campaigns/YOUR_CAMPAIGN_ID_HERE/schedule"
+#
+# For more workflows, see: /docs/07_WORKFLOWS.md
+# For complete API reference, see: /docs/03_DATA_API.md

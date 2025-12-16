@@ -1,0 +1,73 @@
+# Workflow 7: Testing with Minimal Budget
+# Use this for: Testing new creatives before full launch
+# Reference: /docs/07_WORKFLOWS.md - Workflow 7
+
+campaign_id: "creative_test_001"
+client_account_id: "acct_iflytek"
+name: "TEST - New Creative Concept"
+daily_budget: 100  # SGD 1.00 - minimum for testing
+
+video:
+  file_path: "creatives/iflytek_ainote2.mp4"
+  thumbnail: null
+
+primary_text: "Testing new ad concept - do not scale"
+headline: "Test Ad"
+description: "Creative testing only"
+call_to_action: "LEARN_MORE"
+
+destination_url: "https://shop.partipost.com/test"
+url_parameters: "utm_source=facebook&utm_campaign=creative_test"
+
+geo_locations:
+  countries: ["SG"]
+
+pixel_id: null
+page_id: null
+catalog_id: null
+
+# ============================================================================
+# USAGE:
+# ============================================================================
+#
+# 1. Create test campaign:
+#    curl -X POST "http://localhost:8000/api/v1/campaigns" \
+#      -H "Content-Type: application/json" \
+#      -d '{"config_path": "configs/workflow7_minimal_budget_test.yaml"}'
+#
+# 2. Activate immediately for testing:
+#    curl -X POST "http://localhost:8000/api/v1/campaigns/creative_test_001/activate"
+#
+# 3. Monitor performance for 1-2 hours
+#    - Check Meta Ads Manager for results
+#    - Evaluate CTR, CPM, engagement
+#
+# 4. Decision:
+#    If results are GOOD:
+#      - Pause this test campaign
+#      - Create production campaign with same creative and higher budget
+#
+#    If results are POOR:
+#      - Pause in Meta Ads Manager
+#      - Try different creative
+#
+# ============================================================================
+# BEFORE USING:
+# ============================================================================
+#
+# 1. Update campaign_id to be unique (e.g., "creative_test_002")
+# 2. Update video file path to your test creative
+# 3. Keep budget LOW (100-500 cents) for testing
+# 4. Use test destination URL if available
+# 5. Monitor closely after activation
+# 6. Don't let test campaigns run indefinitely!
+#
+# ============================================================================
+# BEST PRACTICES:
+# ============================================================================
+#
+# - Test ONE variable at a time (creative, copy, audience, etc.)
+# - Run test for at least 1-2 hours to gather data
+# - Compare against baseline/existing campaigns
+# - Document results before pausing
+# - Scale winners quickly to production budgets

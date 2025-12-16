@@ -1,0 +1,43 @@
+# ============================================================================
+# HISTORICAL TEST FILE - ALREADY USED
+# ============================================================================
+# This campaign was already created on Dec 4, 2024
+# Campaign ID: 120238696778160005
+# DO NOT use this file - campaign ID already exists!
+#
+# This was the first campaign with start_time feature implemented.
+#
+# For new campaigns, use:
+#   - configs/workflow2_scheduled_launch.yaml (for scheduled campaigns)
+#   - configs/template_campaign.yaml (general template)
+# ============================================================================
+
+# Test Campaign with Start Time in Meta
+campaign_id: "iflytek_starttime_test_003"  # ALREADY USED - DO NOT REUSE
+client_account_id: "acct_iflytek"
+name: "iFLYTEK AINOTE2 - Start Time Test"
+daily_budget: 1000  # SGD 10.00 in cents
+
+# Video creative
+video:
+  file_path: "creatives/iflytek_ainote2.mp4"
+  thumbnail: null
+
+# Ad copy
+primary_text: "Discover the iFLYTEK AINOTE2 - Smart AI-powered note-taking device"
+headline: "iFLYTEK AINOTE2 - Start Time Test"
+description: "AI-powered productivity tool"
+call_to_action: "SHOP_NOW"
+
+# Destination
+destination_url: "https://shop.partipost.com/"
+url_parameters: "utm_source=facebook&utm_campaign=iflytek_starttime_test"
+
+# Targeting (Singapore)
+geo_locations:
+  countries: ["SG"]
+
+# Asset overrides
+pixel_id: null
+page_id: null
+catalog_id: null

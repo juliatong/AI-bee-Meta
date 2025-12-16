@@ -1,0 +1,65 @@
+# Workflow 2: Create Campaign for Scheduled Launch
+# Use this for: Future campaign launches, coordinated releases
+# Reference: /docs/07_WORKFLOWS.md - Workflow 2
+
+campaign_id: "scheduled_launch_001"
+client_account_id: "acct_iflytek"
+name: "Product Launch - Scheduled"
+daily_budget: 5000  # SGD 50.00 (production budget)
+
+video:
+  file_path: "creatives/iflytek_ainote2.mp4"
+  thumbnail: null
+
+primary_text: "New product launch! Get it now with exclusive early-bird discount"
+headline: "Shop New Product Launch"
+description: "Limited time offer - don't miss out!"
+call_to_action: "SHOP_NOW"
+
+destination_url: "https://shop.partipost.com/"
+url_parameters: "utm_source=facebook&utm_campaign=scheduled_launch"
+
+geo_locations:
+  countries: ["SG"]
+
+pixel_id: null
+page_id: null
+catalog_id: null
+
+# ============================================================================
+# USAGE:
+# ============================================================================
+#
+# 1. Create campaign WITH start_time (future activation):
+#    curl -X POST "http://localhost:8000/api/v1/campaigns" \
+#      -H "Content-Type: application/json" \
+#      -d '{
+#        "config_path": "configs/workflow2_scheduled_launch.yaml",
+#        "start_time": "2026-03-15T08:00:00"
+#      }'
+#
+#    This will:
+#    - Create campaign in PAUSED status
+#    - Set AdSet start_time in Meta API to 2026-03-15T08:00:00+0800
+#    - Schedule automatic activation at that time
+#
+# 2. Check scheduled job:
+#    cat data/schedules.json | jq '.[] | select(.campaign_id=="scheduled_launch_001")'
+#
+# 3. Cancel schedule if needed:
+#    curl -X DELETE "http://localhost:8000/api/v1/campaigns/scheduled_launch_001/schedule"
+#
+# 4. Check status on launch day:
+#    curl "http://localhost:8000/api/v1/campaigns/scheduled_launch_001" | jq '.status'
+#
+# ============================================================================
+# BEFORE USING:
+# ============================================================================
+#
+# 1. Update campaign_id to be unique (e.g., "scheduled_launch_002")
+# 2. Update video file path if using different video
+# 3. Update ad copy for your campaign
+# 4. Update destination_url to your landing page
+# 5. Set appropriate daily_budget for production
+# 6. Choose your start_time (GMT+8 Singapore time)
+# 7. IMPORTANT: Keep machine running until activation time!

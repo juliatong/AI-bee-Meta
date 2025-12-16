@@ -1,0 +1,52 @@
+# Workflow 1: Create Campaign for Immediate Activation
+# Use this for: Testing campaigns, quick launches
+# Reference: /docs/07_WORKFLOWS.md - Workflow 1
+
+campaign_id: "immediate_test_001"
+client_account_id: "acct_iflytek"
+name: "Test Campaign - Immediate Activation"
+daily_budget: 1000  # SGD 10.00 (minimal for testing)
+
+video:
+  file_path: "creatives/iflytek_ainote2.mp4"
+  thumbnail: null
+
+primary_text: "Test campaign for immediate activation - do not scale"
+headline: "Test Ad - Immediate"
+description: "Testing immediate activation workflow"
+call_to_action: "LEARN_MORE"
+
+destination_url: "https://shop.partipost.com/"
+url_parameters: "utm_source=facebook&utm_campaign=immediate_test"
+
+geo_locations:
+  countries: ["SG"]
+
+pixel_id: null
+page_id: null
+catalog_id: null
+
+# ============================================================================
+# USAGE:
+# ============================================================================
+#
+# 1. Create the campaign (will be PAUSED):
+#    curl -X POST "http://localhost:8000/api/v1/campaigns" \
+#      -H "Content-Type: application/json" \
+#      -d '{"config_path": "configs/workflow1_immediate_activation.yaml"}'
+#
+# 2. Activate immediately:
+#    curl -X POST "http://localhost:8000/api/v1/campaigns/immediate_test_001/activate"
+#
+# 3. Check status:
+#    curl "http://localhost:8000/api/v1/campaigns/immediate_test_001" | jq '.status'
+#
+# ============================================================================
+# BEFORE USING:
+# ============================================================================
+#
+# 1. Update campaign_id to be unique (e.g., "immediate_test_002")
+# 2. Update video file path if using different video
+# 3. Update ad copy to match your campaign
+# 4. Update destination_url to your landing page
+# 5. Verify video file exists: ls -lh creatives/iflytek_ainote2.mp4

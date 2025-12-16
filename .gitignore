@@ -1,0 +1,37 @@
+# Environment
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Data files (contain sensitive info)
+data/
+!data/.gitkeep
+
+# Creative files (large, client-owned)
+creatives/
+!creatives/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# APScheduler
+*.db
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,54 @@
+# ============================================================================
+# HISTORICAL TEST FILE - ALREADY USED
+# ============================================================================
+# This campaign was already created on Dec 2-3, 2024
+# Campaign ID: 120238688523930005
+# DO NOT use this file to create a new campaign - it will conflict!
+#
+# For new campaigns, use one of these instead:
+#   - configs/template_campaign.yaml (general template)
+#   - configs/workflow1_immediate_activation.yaml
+#   - configs/workflow2_scheduled_launch.yaml
+#   - configs/workflow7_minimal_budget_test.yaml
+# ============================================================================
+
+# Example Campaign Configuration
+# Copy this file and modify for your campaigns
+
+campaign_id: "iflytek_ainote2_singapore_test_001"  # ALREADY USED - DO NOT REUSE
+client_account_id: "acct_iflytek"  # Must match key in data/accounts.json
+name: "iFLYTEK AINOTE2 - Singapore Test"
+daily_budget: 1000  # SGD 10.00 in cents (minimum for testing)
+
+# Video creative
+video:
+  file_path: "creatives/iflytek_ainote2.mp4"  # Path relative to project root
+  thumbnail: null  # Optional: path to thumbnail image
+
+# Ad copy
+primary_text: "Discover the iFLYTEK AINOTE2 - Smart AI-powered note-taking device"
+headline: "iFLYTEK AINOTE2"
+description: "AI-powered productivity tool"  # Optional
+call_to_action: "SHOP_NOW"  # SHOP_NOW, LEARN_MORE, SIGN_UP, etc.
+
+# Destination
+destination_url: "https://shop.partipost.com/"
+url_parameters: "utm_source=facebook&utm_campaign=iflytek_test"  # Optional
+
+# Targeting (Singapore)
+geo_locations:
+  countries: ["SG"]  # Singapore
+
+# NOTE: Campaign start_time is now passed via API request, not in this YAML file
+# When creating the campaign, include "start_time" in the API request body:
+# {
+#   "config_path": "configs/example_campaign.yaml",
+#   "start_time": "2026-01-03T20:00:00"  # GMT+8 Singapore time (optional)
+# }
+# If start_time is in the future, the campaign will be auto-scheduled for activation.
+# If start_time is omitted or in the past, campaign stays PAUSED until manually activated.
+
+# Asset overrides (optional - uses account defaults if not specified)
+pixel_id: null
+page_id: null
+catalog_id: null
