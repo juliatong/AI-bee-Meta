@@ -114,7 +114,7 @@ url_parameters: "utm_source=facebook&utm_campaign=spring_sale"
 
 Comprehensive documentation is available in the `/docs` directory:
 
-- **[Setup Guide](SETUP_GUIDE.md)** - Detailed first-time setup instructions
+- **[Setup Guide](docs/05_SETUP.md)** - Detailed first-time setup instructions
 - **[Quick Start](QUICK_START.md)** - Minimal 3-minute setup for testing
 - **[Architecture](docs/02_ARCHITECTURE.md)** - Technical architecture and design
 - **[API Reference](docs/03_DATA_API.md)** - API endpoints and data models
@@ -201,7 +201,7 @@ Copyright (c) 2024. All rights reserved.
 
 ## Support
 
-For detailed setup instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md).
+For detailed setup instructions, see [docs/05_SETUP.md](docs/05_SETUP.md).
 
 For quick testing, see [QUICK_START.md](QUICK_START.md).
 
